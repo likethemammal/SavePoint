@@ -1,0 +1,21 @@
+{
+	"name": "CHANGE THIS : Extension boilerplate",
+	"version": "0.0.1",
+	"manifest_version": 2,
+	"description": "This extension was created with the awesome extensionizr.io",
+	"homepage_url": "http://extensionizr.com",
+	"browser_action": {
+		"default_icon": {                    // optional
+			"16": "images/icon16.png"           // optional
+		},
+		"default_title": "Google Mail"     // optional; shown in tooltip
+	},
+	"default_locale": "en",
+	"background": {
+		"page": "src/bg/background.html",
+		"persistent": true
+	},
+	"permissions": [
+		"tabs", "http://*/*", "https://*/*"
+	]
+}
