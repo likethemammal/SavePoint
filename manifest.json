@@ -8,7 +8,7 @@
 		"default_icon": {                    // optional
 			"16": "images/icon16.png"           // optional
 		},
-		"default_title": "Google Mail"     // optional; shown in tooltip
+		"default_title": "Save Point"     // optional; shown in tooltip
 	},
 	"default_locale": "en",
 	"background": {
@@ -17,5 +17,16 @@
 	},
 	"permissions": [
 		"tabs", "http://*/*", "https://*/*"
+	],
+	  "content_scripts": [
+		{
+			"matches": ["http://www.google.com/*"],
+			"js": ["jquery.js"]
+		}
+	],
+	"web_accessible_resources": [
+		"jquery.js",
+		"jquery.nearest.min.js",
+		"savepoint.js"
 	]
 }
