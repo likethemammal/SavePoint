@@ -25,6 +25,7 @@
 	"web_accessible_resources": [
 		"jquery.js",
 		"jquery.nearest.min.js",
-		"savepoint.js"
+		"savepoint.js",
+		"tabManager.js"
 	]
 }
