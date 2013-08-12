@@ -12,14 +12,13 @@
 				window.lastScroll = null;
 				chrome.extension.sendRequest('');
 			} else {
-				window.scrollTo(0, window.lastScroll);
+				animateScroll();
 			}
 		} else {
 			window.lastScroll = currentScroll;
-			console.log("Extension Clicked");
+			console.log("Extension Clicked", window.lastScroll);
 			chrome.extension.sendRequest('g');
 		}
-
 	}
 	
 	SP.checkScroll = function() {
@@ -47,5 +46,21 @@
 	
 	SP.toggleSavePoint();
 	SP.checkScroll();
+	
+	function animateScroll() {	
+		for (var i = 0; i < 30; i++) {
+			var scrollPoint = Math.abs((window.lastScroll-window.scrollY)/30);
+
+			if (window.scrollY < window.lastScroll) {
+				setTimeout(function(){
+					window.scrollTo(0, window.scrollY + scrollPoint);
+				}, (500/30)*i);
+			} else {
+				setTimeout(function(){
+					window.scrollTo(0, window.scrollY - scrollPoint);
+				}, (500/30)*i);
+			}
+		}
+	}
 	
 }());
