@@ -5,9 +5,7 @@
 	"description": "This extension was created with the awesome extensionizr.io",
 	"homepage_url": "http://extensionizr.com",
 	"browser_action": {
-		"default_icon": {                    // optional
-			"16": "images/icon16.png"           // optional
-		},
+		"default_icon":  "src/bg/icons/icon16.png",
 		"default_title": "Save Point"     // optional; shown in tooltip
 	},
 	"default_locale": "en",
