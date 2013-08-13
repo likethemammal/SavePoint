@@ -23,11 +23,12 @@
 		}
 	],
 	"web_accessible_resources": [
+		"savepoint.js",
 		"jquery.js",
 		"jquery.nearest.min.js",
+		"src/bg/savepoint.css",
 		"src/bg/clearData.js",
 		"src/bg/onActivate.js",
-		"src/bg/checkTab.js",
-		"savepoint.js"
+		"src/bg/checkTab.js"
 	]
 }

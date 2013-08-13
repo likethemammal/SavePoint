@@ -1,4 +1,5 @@
 (function(){
+console.log(reallyLoaded);
 	if (window.reallyLoaded) {
 
 		var SP = SP || {};
@@ -25,6 +26,12 @@
 				window.lastScroll = currentScroll;
 				console.log("Extension Clicked", window.lastScroll);
 				chrome.extension.sendRequest('g');
+				
+				var body=document.getElementsByTagName("body")[0];
+				var img=document.createElement("img");
+				body.style.background = "#aac";
+				img.setAttribute("id","savepoint");
+				body.appendChild(img);
 			}
 		}
 		
