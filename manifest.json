@@ -2,15 +2,16 @@
 	"name": "SavePoint",
 	"version": "0.0.1",
 	"manifest_version": 2,
-	"description": "This extension was created with the awesome extensionizr.io",
+	"author": "Chris Dolphin",
+	"description": "Saves the page scroll and snaps it back when desired.",
 	"homepage_url": "http://extensionizr.com",
 	"browser_action": {
 		"default_icon":  "icons/icon16inactive.png",
-		"default_title": "Save Point"     // optional; shown in tooltip
+		"default_title": "Save Point"
 	},
 	"icons": {
-		  "48": "icons/icon48g.png"
-		, "128": "icons/icon128.png"
+		"48": "icons/icon48g.png",
+		"128": "icons/icon128.png"
 	},
 	"default_locale": "en",
 	"background": {
@@ -20,16 +21,8 @@
 	"permissions": [
 		"tabs", "http://*/*", "https://*/*"
 	],
-	  "content_scripts": [
-		{
-			"matches": ["http://www.google.com/*"],
-			"js": ["jquery.js"]
-		}
-	],
 	"web_accessible_resources": [
 		"savepoint.js",
-		"jquery.js",
-		"jquery.nearest.min.js",
 		"src/bg/savepoint.css",
 		"src/bg/clearData.js",
 		"src/bg/onActivate.js",
