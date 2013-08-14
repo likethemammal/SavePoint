@@ -29,6 +29,8 @@
 		"src/bg/savepoint.css",
 		"src/bg/clearData.js",
 		"src/bg/onActivate.js",
-		"src/bg/checkTab.js"
+		"src/bg/checkTab.js", 
+		"icons/icon48g.png",
+		"icons/icon48y.png"
 	]
 }

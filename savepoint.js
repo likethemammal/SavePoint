@@ -4,7 +4,7 @@ console.log(reallyLoaded);
 
 		var SP = SP || {};
 		var rangeMin = 200;
-		var rangeMax = 200;
+		var rangeMax = 0;
 		
 		SP.toggleSavePoint = function() {
 			var currentScroll = window.scrollY;
@@ -19,6 +19,8 @@ console.log(reallyLoaded);
 				if (window.scrollY <= window.lastScroll + rangeMax && window.scrollY >= window.lastScroll - rangeMin) {
 					window.lastScroll = null;
 					chrome.extension.sendRequest('');
+					var img = document.getElementById('savepoint');
+					img.style.display = "none";
 				} else {
 					animateScroll();
 				}
@@ -27,11 +29,30 @@ console.log(reallyLoaded);
 				console.log("Extension Clicked", window.lastScroll);
 				chrome.extension.sendRequest('g');
 				
-				var body=document.getElementsByTagName("body")[0];
-				var img=document.createElement("img");
-				body.style.background = "#aac";
-				img.setAttribute("id","savepoint");
-				body.appendChild(img);
+				var imgScroll = currentScroll + 30;
+				var imgPath = chrome.extension.getURL("icons/icon48g.png");
+
+				
+				if (document.getElementById('savepoint')) {
+					var img = document.getElementById('savepoint');
+					img.style.display = "block";
+					img.style.top = imgScroll + "px";
+					img.setAttribute("src", imgPath);
+					img.style.zIndex = findHighestZIndex() + 1;
+				} else {
+					var body=document.getElementsByTagName("body")[0];
+					var img=document.createElement("img");
+					var imgPath = chrome.extension.getURL("icons/icon48g.png");
+					console.log(imgPath);
+					img.setAttribute("id","savepoint");
+					img.setAttribute("src", imgPath);
+					body.insertBefore(img,body.firstChild);
+					img.style.position = "absolute";
+					img.style.top = imgScroll + "px";
+					img.style.right = "75px";
+					img.style.width = "50px";
+					img.style.height = "50px";
+				}
 			}
 		}
 		
@@ -42,9 +63,15 @@ console.log(reallyLoaded);
 					if (window.scrollY <= window.lastScroll + rangeMax && window.scrollY >= window.lastScroll - rangeMin) {
 						console.log('I am within');
 						chrome.extension.sendRequest('g');
+						var img = document.getElementById('savepoint');
+						var imgPath = chrome.extension.getURL("icons/icon48g.png");
+						img.setAttribute('src', imgPath);
 					} else {
 						console.log('I am not');
 						chrome.extension.sendRequest('y');
+						var img = document.getElementById('savepoint');
+						var imgPath = chrome.extension.getURL("icons/icon48y.png");
+						img.setAttribute('src', imgPath);
 					}
 				}
 			}
@@ -76,5 +103,22 @@ console.log(reallyLoaded);
 				}
 			}
 		}
+		
+		function findHighestZIndex()
+{
+  var elems = document.getElementsByTagName("*");
+  var highest = 0;
+  for (var i = 0; i < elems.length; i++)
+  {
+    var zindex=document.defaultView.getComputedStyle(elems[i],null).getPropertyValue("z-index");
+    if ((zindex > highest) && (zindex != 'auto'))
+    {
+      highest = zindex;
+    }
+  }
+    console.log(highest);
+
+  return highest;
+}
 	}
 }());

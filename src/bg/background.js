@@ -16,11 +16,23 @@ chrome.tabs.onActivated.addListener(function(){
 	chrome.tabs.executeScript(null, {file: "src/bg/onActivate.js"});
 });
 
-chrome.tabs.onUpdated.addListener(function(){
-	console.log('Tab Updated');
+chrome.tabs.onCreated.addListener(function(){
+	console.log('Tab Created');
 	chrome.tabs.executeScript(null, {file: "src/bg/clearData.js"});
 	chrome.tabs.executeScript(null, {file: "src/bg/checkTab.js"});
-	console.log(chrome.browserAction.onClicked);
+	chrome.tabs.executeScript(null, {file: "src/bg/onActivate.js"});
+});
+
+var updated = [];
+
+chrome.tabs.onUpdated.addListener(function(tab){
+	if (!updated[tab.id]) {
+		console.log('Tab Updated');
+		chrome.tabs.executeScript(null, {file: "src/bg/clearData.js"});
+		chrome.tabs.executeScript(null, {file: "src/bg/checkTab.js"});
+		console.log(chrome.browserAction.onClicked);
+		updated[tab.id] = true;
+	}
 });
 
 // chrome.tabs.onCreated.addListener(function(){
