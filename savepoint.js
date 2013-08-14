@@ -1,5 +1,4 @@
 (function(){
-console.log(reallyLoaded);
 	if (window.reallyLoaded) {
 
 		var SP = SP || {};
@@ -52,6 +51,7 @@ console.log(reallyLoaded);
 					img.style.right = "75px";
 					img.style.width = "50px";
 					img.style.height = "50px";
+					img.style.zIndex = findHighestZIndex() + 1;
 				}
 			}
 		}

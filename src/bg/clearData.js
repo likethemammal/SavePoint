@@ -3,5 +3,5 @@
 	window.loaded = null;
 	window.reallyLoaded = null;
 	window.lastScroll = null;
-	chrome.extension.sendRequest('');
+	chrome.extension.sendRequest('inactive');
 }());

@@ -14,30 +14,14 @@ chrome.tabs.onActivated.addListener(function(){
 	chrome.tabs.executeScript(null, {file: "src/bg/clearData.js"});
 	chrome.tabs.executeScript(null, {file: "src/bg/checkTab.js"});
 	chrome.tabs.executeScript(null, {file: "src/bg/onActivate.js"});
+	chrome.browserAction.setIcon({path: 'icons/icon16.png'});
 });
 
-chrome.tabs.onCreated.addListener(function(){
-	console.log('Tab Created');
-	chrome.tabs.executeScript(null, {file: "src/bg/clearData.js"});
-	chrome.tabs.executeScript(null, {file: "src/bg/checkTab.js"});
-	chrome.tabs.executeScript(null, {file: "src/bg/onActivate.js"});
-});
-
-var updated = [];
-
-chrome.tabs.onUpdated.addListener(function(tab){
-	if (!updated[tab.id]) {
+chrome.tabs.onUpdated.addListener(function(tabID, changeInfo, tab){
+	if (changeInfo.url) {
 		console.log('Tab Updated');
 		chrome.tabs.executeScript(null, {file: "src/bg/clearData.js"});
 		chrome.tabs.executeScript(null, {file: "src/bg/checkTab.js"});
 		console.log(chrome.browserAction.onClicked);
-		updated[tab.id] = true;
 	}
 });
-
-// chrome.tabs.onCreated.addListener(function(){
-	// console.log('Tab Created');
-	// chrome.tabs.executeScript(null, {file: "src/bg/clearData.js"});
-	// chrome.tabs.executeScript(null, {file: "src/bg/checkTab.js"});
-// });
-

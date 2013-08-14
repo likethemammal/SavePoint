@@ -6,6 +6,7 @@
 		console.log('Window Loaded');
 		window.loaded = true;
 		window.reallyLoaded = true;
+		chrome.extension.sendRequest('');
 	}
 	
 	if (!window.loaded) {
