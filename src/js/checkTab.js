@@ -7,7 +7,7 @@
 		window.loaded = true;
 		window.reallyLoaded = true;
 		chrome.extension.sendRequest('');
-	}
+	};
 	
 	if (!window.loaded) {
 		console.warn('Window.onload set');

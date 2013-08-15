@@ -1,14 +1,22 @@
 (function(){
+
 	if (window.reallyLoaded) {
 
 		var SP = SP || {};
 		var rangeMin = 200;
-		var rangeMax = 40;
-		
-		SP.toggleSavePoint = function() {
+		var rangeMax = 40,
+            img;
+
+        if (document.getElementById('savepoint')) {
+            img = document.getElementById('savepoint');
+        }  else {
+            img = document.createElement("img");
+        }
+
+        SP.toggleSavePoint = function() {
 			var currentScroll = window.scrollY;
-			
-			if (!currentScroll) {
+
+            if (!currentScroll) {
 				currentScroll = 1;
 			}
 			
@@ -18,7 +26,6 @@
 				if (window.scrollY <= window.lastScroll + rangeMax && window.scrollY >= window.lastScroll - rangeMin) {
 					window.lastScroll = null;
 					chrome.extension.sendRequest('');
-					var img = document.getElementById('savepoint');
 					img.style.display = "none";
 				} else {
 					animateScroll();
@@ -31,17 +38,13 @@
 				var imgScroll = currentScroll + 30;
 				var imgPath = chrome.extension.getURL("/src/icons/icon48g.png");
 
-				
 				if (document.getElementById('savepoint')) {
-					var img = document.getElementById('savepoint');
 					img.style.display = "block";
 					img.style.top = imgScroll + "px";
 					img.setAttribute("src", imgPath);
 					img.style.zIndex = findHighestZIndex() + 1;
 				} else {
 					var body=document.getElementsByTagName("body")[0];
-					var img=document.createElement("img");
-					console.log(imgPath);
 					img.setAttribute("id","savepoint");
 					img.setAttribute("src", imgPath);
 					body.insertBefore(img,body.firstChild);
@@ -53,7 +56,7 @@
 					img.style.zIndex = findHighestZIndex() + 1;
 				}
 			}
-		}
+		};
 		
 		SP.checkScroll = function() {
 					
@@ -62,18 +65,16 @@
 					if (window.scrollY <= window.lastScroll + rangeMax && window.scrollY >= window.lastScroll - rangeMin) {
 						console.log('I am within');
 						chrome.extension.sendRequest('g');
-						var img = document.getElementById('savepoint');
 						var imgPath = chrome.extension.getURL("/src/icons/icon48g.png");
 						img.setAttribute('src', imgPath);
 					} else {
 						console.log('I am not');
 						chrome.extension.sendRequest('y');
-						var img = document.getElementById('savepoint');
 						var imgPath = chrome.extension.getURL("/src/icons/icon48y.png");
 						img.setAttribute('src', imgPath);
 					}
 				}
-			}
+			};
 
 			if (!window.onscroll) {
 				console.log('Scroll Event Listener added');
@@ -82,7 +83,7 @@
 				console.log('Scroll Event Listener added');
 				window.onscroll = onScroll;
 			}
-		}
+		};
 		
 		SP.toggleSavePoint();
 		SP.checkScroll();
@@ -92,31 +93,31 @@
 				var scrollPoint = Math.abs((window.lastScroll-window.scrollY)/30);
 
 				if (window.scrollY < window.lastScroll) {
-					setTimeout(function(){
+					setTimeout(function(scrollPoint){
 						window.scrollTo(0, window.scrollY + scrollPoint);
-					}, (250/30)*i);
+					}, (250/30)*i, scrollPoint);
 				} else {
-					setTimeout(function(){
+					setTimeout(function(scrollPoint){
 						window.scrollTo(0, window.scrollY - scrollPoint);
-					}, (250/30)*i);
+					}, (250/30)*i, scrollPoint);
 				}
 			}
 		}
 		
 		function findHighestZIndex() {
-  var elems = document.getElementsByTagName("*");
-  var highest = 0;
-  for (var i = 0; i < elems.length; i++)
-  {
-    var zindex=document.defaultView.getComputedStyle(elems[i],null).getPropertyValue("z-index");
-    if ((zindex > highest) && (zindex != 'auto'))
-    {
-      highest = zindex;
-    }
-  }
-    console.log(highest);
+            var elems = document.getElementsByTagName("*"),
+                highest = 0;
 
-  return highest;
-}
+            for (var i = 0; i < elems.length; i++) {
+                var zindex = document.defaultView.getComputedStyle(elems[i],null).getPropertyValue("z-index");
+
+                if ((zindex > highest) && (zindex != 'auto')) {
+                    highest = zindex;
+                }
+            }
+
+            return highest;
+        }
 	}
+
 }());
