@@ -3,7 +3,7 @@
 
 		var SP = SP || {};
 		var rangeMin = 200;
-		var rangeMax = 0;
+		var rangeMax = 40;
 		
 		SP.toggleSavePoint = function() {
 			var currentScroll = window.scrollY;

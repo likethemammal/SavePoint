@@ -4,7 +4,7 @@
 	"manifest_version": 2,
 	"author": "Chris Dolphin",
 	"description": "Saves the page scroll and snaps it back when desired.",
-	"homepage_url": "http://extensionizr.com",
+	"homepage_url": "http://likethemammal.com",
 	"browser_action": {
 		"default_icon":  "icons/icon16inactive.png",
 		"default_title": "Save Point"
