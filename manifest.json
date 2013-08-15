@@ -1,17 +1,17 @@
 {
 	"name": "SavePoint",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"manifest_version": 2,
 	"author": "Chris Dolphin",
 	"description": "Saves the page scroll and snaps it back when desired.",
 	"homepage_url": "http://likethemammal.com",
 	"browser_action": {
-		"default_icon":  "icons/icon16inactive.png",
+		"default_icon":  "src/icons/icon16inactive.png",
 		"default_title": "Save Point"
 	},
 	"icons": {
-		"48": "icons/icon48g.png",
-		"128": "icons/icon128.png"
+		"48": "src/icons/icon48g.png",
+		"128": "src/icons/icon128.png"
 	},
 	"default_locale": "en",
 	"background": {
@@ -22,12 +22,11 @@
 		"tabs", "http://*/*", "https://*/*"
 	],
 	"web_accessible_resources": [
-		"savepoint.js",
-		"src/bg/savepoint.css",
-		"src/bg/clearData.js",
-		"src/bg/onActivate.js",
-		"src/bg/checkTab.js", 
-		"icons/icon48g.png",
-		"icons/icon48y.png"
+		"src/js/onSaveClick.js",
+		"src/js/clearData.js",
+		"src/js/onActivate.js",
+		"src/js/checkTab.js", 
+		"src/icons/icon48g.png",
+		"src/icons/icon48y.png"
 	]
 }

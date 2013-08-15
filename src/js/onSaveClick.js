@@ -29,7 +29,7 @@
 				chrome.extension.sendRequest('g');
 				
 				var imgScroll = currentScroll + 30;
-				var imgPath = chrome.extension.getURL("icons/icon48g.png");
+				var imgPath = chrome.extension.getURL("/src/icons/icon48g.png");
 
 				
 				if (document.getElementById('savepoint')) {
@@ -41,7 +41,6 @@
 				} else {
 					var body=document.getElementsByTagName("body")[0];
 					var img=document.createElement("img");
-					var imgPath = chrome.extension.getURL("icons/icon48g.png");
 					console.log(imgPath);
 					img.setAttribute("id","savepoint");
 					img.setAttribute("src", imgPath);
@@ -64,13 +63,13 @@
 						console.log('I am within');
 						chrome.extension.sendRequest('g');
 						var img = document.getElementById('savepoint');
-						var imgPath = chrome.extension.getURL("icons/icon48g.png");
+						var imgPath = chrome.extension.getURL("/src/icons/icon48g.png");
 						img.setAttribute('src', imgPath);
 					} else {
 						console.log('I am not');
 						chrome.extension.sendRequest('y');
 						var img = document.getElementById('savepoint');
-						var imgPath = chrome.extension.getURL("icons/icon48y.png");
+						var imgPath = chrome.extension.getURL("/src/icons/icon48y.png");
 						img.setAttribute('src', imgPath);
 					}
 				}
@@ -104,8 +103,7 @@
 			}
 		}
 		
-		function findHighestZIndex()
-{
+		function findHighestZIndex() {
   var elems = document.getElementsByTagName("*");
   var highest = 0;
   for (var i = 0; i < elems.length; i++)
