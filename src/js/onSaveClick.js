@@ -19,9 +19,7 @@
             if (!currentScroll) {
 				currentScroll = 1;
 			}
-			
-			console.log(currentScroll); 
-					
+
 			if (window.lastScroll) {
 				if (window.scrollY <= window.lastScroll + rangeMax && window.scrollY >= window.lastScroll - rangeMin) {
 					window.lastScroll = null;
@@ -32,11 +30,11 @@
 				}
 			} else {
 				window.lastScroll = currentScroll;
-				console.log("Extension Clicked", window.lastScroll);
+
 				chrome.extension.sendRequest('g');
 				
 				var imgScroll = currentScroll + 30;
-				var imgPath = chrome.extension.getURL("/src/icons/icon48g.png");
+				var imgPath = chrome.extension.getURL("src/icons/icon48g.png");
 
 				if (document.getElementById('savepoint')) {
 					img.style.display = "block";
@@ -63,24 +61,20 @@
 			var onScroll = function (ev) {
 				if (window.lastScroll) {
 					if (window.scrollY <= window.lastScroll + rangeMax && window.scrollY >= window.lastScroll - rangeMin) {
-						console.log('I am within');
 						chrome.extension.sendRequest('g');
-						var imgPath = chrome.extension.getURL("/src/icons/icon48g.png");
+						var imgPath = chrome.extension.getURL("src/icons/icon48g.png");
 						img.setAttribute('src', imgPath);
 					} else {
-						console.log('I am not');
 						chrome.extension.sendRequest('y');
-						var imgPath = chrome.extension.getURL("/src/icons/icon48y.png");
+						var imgPath = chrome.extension.getURL("src/icons/icon48y.png");
 						img.setAttribute('src', imgPath);
 					}
 				}
 			};
 
 			if (!window.onscroll) {
-				console.log('Scroll Event Listener added');
 				window.onscroll = onScroll;
 			} else if (window.onscroll.toString() !== onScroll.toString()) {
-				console.log('Scroll Event Listener added');
 				window.onscroll = onScroll;
 			}
 		};

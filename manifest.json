@@ -25,13 +25,14 @@
 		"src/js/onSaveClick.js",
 		"src/js/clearData.js",
 		"src/js/onActivate.js",
-		"src/js/checkTab.js", 
+		"src/js/checkTab.js",
 		"src/icons/icon48g.png",
 		"src/icons/icon48y.png"
 	],
     "commands": {
         "toggle-save": {
             "suggested_key": {
+                "default": "Ctrl+Shift+S",
                 "windows": "Ctrl+Shift+S",
                 "mac": "Command+Shift+S",
                 "chromeos": "Ctrl+Shift+S",
