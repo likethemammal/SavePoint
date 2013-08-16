@@ -1,6 +1,6 @@
 {
 	"name": "SavePoint",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"manifest_version": 2,
 	"author": "Chris Dolphin",
 	"description": "Saves the page scroll and snaps it back when desired.",
