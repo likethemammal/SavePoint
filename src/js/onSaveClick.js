@@ -3,8 +3,8 @@
 	if (window.reallyLoaded) {
 
 		var SP = SP || {};
-		var rangeMin = 200;
-		var rangeMax = 40,
+		var rangeMin = 200,
+			rangeMax = 40,
             img;
 
         if (document.getElementById('savepoint')) {
@@ -34,7 +34,7 @@
 				chrome.extension.sendRequest('g');
 				
 				var imgScroll = currentScroll + 30;
-				var imgPath = chrome.extension.getURL("src/icons/icon48g.png");
+				var imgPath = chrome.extension.getURL("src/images/icons/icon48g.png");
 
 				if (document.getElementById('savepoint')) {
 					img.style.display = "block";
@@ -62,11 +62,11 @@
 				if (window.lastScroll) {
 					if (window.scrollY <= window.lastScroll + rangeMax && window.scrollY >= window.lastScroll - rangeMin) {
 						chrome.extension.sendRequest('g');
-						var imgPath = chrome.extension.getURL("src/icons/icon48g.png");
+						var imgPath = chrome.extension.getURL("src/images/icons/icon48g.png");
 						img.setAttribute('src', imgPath);
 					} else {
 						chrome.extension.sendRequest('y');
-						var imgPath = chrome.extension.getURL("src/icons/icon48y.png");
+						var imgPath = chrome.extension.getURL("src/images/icons/icon48y.png");
 						img.setAttribute('src', imgPath);
 					}
 				}

@@ -1,17 +1,17 @@
 {
 	"name": "SavePoint",
-	"version": "0.0.3",
+	"version": "0.0.3.6",
 	"manifest_version": 2,
 	"author": "Chris Dolphin",
 	"description": "Saves the page scroll and snaps it back when desired.",
 	"homepage_url": "http://likethemammal.com",
 	"browser_action": {
-		"default_icon":  "src/icons/icon16inactive.png",
+		"default_icon":  "src/images/icons/icon16inactive.png",
 		"default_title": "Save Point"
 	},
 	"icons": {
-		"48": "src/icons/icon48g.png",
-		"128": "src/icons/icon128.png"
+		"48": "src/images/icons/icon48g.png",
+		"128": "src/images/icons/icon128.png"
 	},
 	"default_locale": "en",
 	"background": {
@@ -25,18 +25,18 @@
 		"src/js/onSaveClick.js",
 		"src/js/clearData.js",
 		"src/js/onActivate.js",
-		"src/js/checkTab.js",
-		"src/icons/icon48g.png",
-		"src/icons/icon48y.png"
+		"src/js/checkLoad.js",
+		"src/images/icons/icon48g.png",
+		"src/images/icons/icon48y.png"
 	],
     "commands": {
         "toggle-save": {
             "suggested_key": {
-                "default": "Ctrl+Shift+S",
-                "windows": "Ctrl+Shift+S",
-                "mac": "Command+Shift+S",
-                "chromeos": "Ctrl+Shift+S",
-                "linux": "Ctrl+Shift+S"
+                "default": "Ctrl+Shift+Z",
+                "windows": "Ctrl+Shift+Z",
+                "mac": "Command+Shift+Z",
+                "chromeos": "Ctrl+Shift+Z",
+                "linux": "Ctrl+Shift+Z"
             },
             "description": "Send a 'toggle-save' event to the extension"
         }
