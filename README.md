@@ -31,6 +31,6 @@ To create additional content scripts just add the file to the ```js``` directory
 License:
 -------
 
-*I don't really give to many fucks how this gets used, but its always nice to be mentioned. :]*
+*This licensed under the [WTFPL](http://www.wtfpl.net/about/) :]*
 
   [webstore]: https://chrome.google.com/webstore/detail/savepoint/gcgddopabjjjjonmgchapnicpbgebala
